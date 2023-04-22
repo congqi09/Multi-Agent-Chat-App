@@ -13,7 +13,7 @@ import api.Server;
 import entity.Message;
 import entity.User;
 
-public class ChatAPP {
+public class Chat {
   private JPanel panelMain;
   private JList chatHistory;
   private JTextPane newMessage;
@@ -21,7 +21,7 @@ public class ChatAPP {
   private Server server;
   private final List<String> messageHistory = new ArrayList<>();
 
-  public ChatAPP() {
+  public Chat() {
     try {
       Registry registry = LocateRegistry.getRegistry("localhost", 6666);
       server = (Server) registry.lookup("api.Server");
@@ -47,7 +47,7 @@ public class ChatAPP {
 
   public static void main(String[] args) {
     JFrame frame = new JFrame("ChatAPP");
-    frame.setContentPane(new ChatAPP().panelMain);
+    frame.setContentPane(new Chat().panelMain);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.pack();
     frame.setVisible(true);
