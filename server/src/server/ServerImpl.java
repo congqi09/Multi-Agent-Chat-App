@@ -25,6 +25,11 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
   }
 
   @Override
+  public boolean fakeSignIn(String username, String password) throws Exception {
+    return true;
+  }
+
+  @Override
   public boolean signIn(String username, String password) throws Exception {
     return users.contains(Map.of(username, password));
   }

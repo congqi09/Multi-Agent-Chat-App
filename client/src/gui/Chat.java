@@ -13,11 +13,12 @@ import api.Server;
 import entity.Message;
 import entity.User;
 
-public class Chat {
-  private JPanel panelMain;
+public class Chat extends JPanel {
+  JPanel panelMain;
   private JList chatHistory;
   private JTextPane newMessage;
   private JButton sendButton;
+  JLabel currentUser;
   private Server server;
   private final List<String> messageHistory = new ArrayList<>();
 
