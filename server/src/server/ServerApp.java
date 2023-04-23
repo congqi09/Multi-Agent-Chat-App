@@ -14,11 +14,7 @@ public class ServerApp {
       LocateRegistry.createRegistry(6666);
       Server server = new ServerImpl();
       Naming.bind("rmi://localhost:6666/api.Server", server);
-    } catch (MalformedURLException e) {
-      throw new RuntimeException(e);
-    } catch (AlreadyBoundException e) {
-      throw new RuntimeException(e);
-    } catch (RemoteException e) {
+    } catch (MalformedURLException | AlreadyBoundException | RemoteException e) {
       throw new RuntimeException(e);
     }
   }
