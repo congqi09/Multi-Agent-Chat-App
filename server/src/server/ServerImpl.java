@@ -36,6 +36,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
   @Override
   public void send(Message msg) throws Exception {
+    System.out.println("Server received message: " + msg);
     messages.add(msg);
   }
 

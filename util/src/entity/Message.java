@@ -3,11 +3,16 @@ package entity;
 import java.io.Serializable;
 
 public class Message implements Serializable {
-  User user;
+  String username;
   String content;
 
-  public Message(User user, String text) {
-    this.user = user;
+  public Message(String username, String text) {
+    this.username = username;
     this.content = text;
+  }
+
+  @Override
+  public String toString() {
+    return username + ": " + content;
   }
 }

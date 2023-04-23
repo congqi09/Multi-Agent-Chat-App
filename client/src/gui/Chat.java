@@ -1,7 +1,7 @@
 package gui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.InputMethodListener;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
@@ -10,17 +10,15 @@ import java.util.List;
 import javax.swing.*;
 
 import api.Server;
-import entity.Message;
-import entity.User;
 
-public class Chat extends JPanel {
+public class Chat {
   JPanel panelMain;
-  private JList chatHistory;
-  private JTextPane newMessage;
-  private JButton sendButton;
+  JList chatHistory;
+  JTextPane newMessage;
+  JButton sendButton;
   JLabel currentUser;
-  private Server server;
-  private final List<String> messageHistory = new ArrayList<>();
+  Server server;
+  final List<String> messageHistory = new ArrayList<>();
 
   public Chat() {
     try {
@@ -29,25 +27,10 @@ public class Chat extends JPanel {
     } catch (Exception e) {
       e.printStackTrace();
     }
-
-    sendButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        try {
-          server.send(new Message(new User("user", ""), newMessage.getText()));
-        } catch (Exception ex) {
-          throw new RuntimeException(ex);
-        }
-        messageHistory.add(newMessage.getText());
-        newMessage.setText(null); // clear the input field
-        chatHistory.setListData(messageHistory.toArray());
-        // TODO： get messages from server or other clients
-      }
-    });
   }
 
   public static void main(String[] args) {
-    JFrame frame = new JFrame("ChatAPP");
+    JFrame frame = new JFrame("Chat");
     frame.setContentPane(new Chat().panelMain);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.pack();

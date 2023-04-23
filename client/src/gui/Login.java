@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class Login extends JPanel {
+public class Login {
   JPanel panelMain;
   JTextField usernameField;
   private JLabel usernameTitle;

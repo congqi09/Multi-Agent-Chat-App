@@ -4,6 +4,8 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import entity.Message;
+
 public class Main {
   private static String username;
 
@@ -15,7 +17,7 @@ public class Main {
     CardLayout cardLayout = new CardLayout();
     contentPane.setLayout(cardLayout);
 
-    Login login = new Login();
+    gui.Login login = new Login();
     Chat chat = new Chat();
     contentPane.add(login.panelMain, "login");
     contentPane.add(chat.panelMain, "chat");
@@ -24,6 +26,19 @@ public class Main {
       username = login.usernameField.getText();
       cardLayout.show(contentPane, "chat");
       chat.currentUser.setText("Current User: " + username);
+    });
+
+    chat.sendButton.addActionListener(e -> {
+      Message message = new Message(username, chat.newMessage.getText());
+      try {
+        chat.server.send(message);
+        chat.messageHistory.clear();
+        chat.messageHistory.addAll(chat.server.get().stream().map(Message::toString).toList());
+      } catch (Exception ex) {
+        throw new RuntimeException(ex);
+      }
+      chat.chatHistory.setListData(chat.messageHistory.toArray());
+      chat.newMessage.setText(null); // clear the input field
     });
 
     frame.setVisible(true);
