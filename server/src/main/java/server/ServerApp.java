@@ -6,13 +6,14 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-import api.Server;
+import api.RMIServer;
+import service.RMIServerImpl;
 
 public class ServerApp {
   public static void main(String[] args) {
     try {
       LocateRegistry.createRegistry(6666);
-      Server server = new ServerImpl();
+      RMIServer server = new RMIServerImpl();
       Naming.bind("rmi://localhost:6666/api.Server", server);
     } catch (MalformedURLException | AlreadyBoundException | RemoteException e) {
       throw new RuntimeException(e);

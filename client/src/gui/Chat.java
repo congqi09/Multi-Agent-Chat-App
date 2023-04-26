@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.event.InputMethodEvent;
-import java.awt.event.InputMethodListener;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
@@ -9,7 +7,7 @@ import java.util.List;
 
 import javax.swing.*;
 
-import api.Server;
+import api.RMIServer;
 
 public class Chat {
   JPanel panelMain;
@@ -17,13 +15,13 @@ public class Chat {
   JTextPane newMessage;
   JButton sendButton;
   JLabel currentUser;
-  Server server;
+  RMIServer server;
   final List<String> messageHistory = new ArrayList<>();
 
   public Chat() {
     try {
       Registry registry = LocateRegistry.getRegistry("localhost", 6666);
-      server = (Server) registry.lookup("api.Server");
+      server = (RMIServer) registry.lookup("api.Server");
     } catch (Exception e) {
       e.printStackTrace();
     }
