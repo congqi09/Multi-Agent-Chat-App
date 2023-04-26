@@ -1,6 +1,6 @@
 package api;
 
-import entity.Message;
+import com.neu.chatApp.entity.Message;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

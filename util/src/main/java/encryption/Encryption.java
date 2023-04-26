@@ -1,7 +1,7 @@
 package encryption;
 
 import java.util.Random;
-import org.apache.commons.codec.digest.DigestUtils;
+//import org.apache.commons.codec.digest.DigestUtils;
 
 public class Encryption {
 
@@ -26,6 +26,7 @@ public class Encryption {
     * @return the md5 hex code string
     */
     public static String md5(String password, String salt) {
-      return DigestUtils.md5Hex(password + salt);
+//      return DigestUtils.md5Hex(password + salt);
+      return password+salt;
     }
 }
