@@ -1,14 +1,8 @@
 package server;
 
-import java.net.MalformedURLException;
-import java.rmi.AlreadyBoundException;
-import java.rmi.Naming;
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
+import org.springframework
 
-import api.Server;
-
-public class ServerApp {
+public class ServerApp implements CommandLineRunner {
   public static void main(String[] args) {
     try {
       LocateRegistry.createRegistry(6666);

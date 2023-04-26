@@ -1,4 +1,4 @@
-package dispatcher;
+//package dispatcher;
 
 import handler.GeneralCommunicationHandler;
 import handler.GeneralEventHandlerAPI;
@@ -16,14 +16,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@Slf4j
-@ChannelHandler.Sharable
-public class ClientDispatcher extends SimpleChannelInboundHandler<TransmitProtocol> {
+//@Slf4j
+//@ChannelHandler.Sharable
+//public class ClientDispatcher extends SimpleChannelInboundHandler<TransmitProtocol> {
 
 
 //    private final GeneralEventHandlerAPI<LeaderElectionProtocol> leaderElectionHandler;
 
-      private final GeneralEventHandlerAPI<GeneralCommunicationProtocol> generalCommunicationHandler;
+//      private final GeneralEventHandlerAPI<GeneralCommunicationProtocol> generalCommunicationHandler;
 //
 //    private final GeneralEventHandlerAPI<JoinAndLeaveProtocol> joinAndLeaveHandler;
 //
@@ -31,13 +31,13 @@ public class ClientDispatcher extends SimpleChannelInboundHandler<TransmitProtoc
 //
 //    private final ExecutorService executorService = Executors.newCachedThreadPool();
 //
-    public ClientDispatcher() {
-//        this.leaderElectionHandler = new LeaderElectionHandler();
-        this.generalCommunicationHandler = new GeneralCommunicationHandler();
-//        this.joinAndLeaveHandler = new JoinAndLeaveHandler();
-//        this.transactionEventHandler = new TransactionHandler();
-    }
-//
+//    public ClientDispatcher() {
+////        this.leaderElectionHandler = new LeaderElectionHandler();
+//        this.generalCommunicationHandler = new GeneralCommunicationHandler();
+////        this.joinAndLeaveHandler = new JoinAndLeaveHandler();
+////        this.transactionEventHandler = new TransactionHandler();
+//    }
+////
 //    @Override
 //    protected void channelRead0(ChannelHandlerContext ctx, TransmitProtocol msg) throws Exception {
 //        switch (msg.getType()) {
@@ -113,4 +113,4 @@ public class ClientDispatcher extends SimpleChannelInboundHandler<TransmitProtoc
 //        }
 //        return null;
 //    }
-}
+//}

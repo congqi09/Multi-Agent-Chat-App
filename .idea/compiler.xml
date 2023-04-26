@@ -7,23 +7,25 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="util" />
         <module name="client" />
-        <module name="chat-app" />
+        <module name="server" />
+        <module name="util" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chat-app" target="17" />
       <module name="client" target="17" />
       <module name="Multi-Agent-Chat-App" target="17" />
+      <module name="server" target="17" />
       <module name="util" target="17" />
       <module name="util (1)" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="chat-app" options="-parameters" />
+      <module name="chat-app" options="" />
       <module name="client" options="-parameters" />
+      <module name="server" options="-parameters" />
       <module name="util" options="-parameters" />
       <module name="util (1)" options="-parameters" />
     </option>
