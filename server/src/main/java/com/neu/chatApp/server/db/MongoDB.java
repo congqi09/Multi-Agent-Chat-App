@@ -9,6 +9,7 @@ import com.mongodb.client.model.Filters;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
+import org.springframework.stereotype.Repository;
 import org.yaml.snakeyaml.Yaml;
 
 import com.neu.chatApp.util.entity.User;
@@ -17,6 +18,7 @@ import static com.mongodb.MongoClientSettings.getDefaultCodecRegistry;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
+@Repository
 public class MongoDB implements DB {
     private String uri;
     private CodecProvider pojoCodecProvider;
