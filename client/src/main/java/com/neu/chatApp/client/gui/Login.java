@@ -1,7 +1,4 @@
-package gui;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+package com.neu.chatApp.client.gui;
 
 import javax.swing.*;
 

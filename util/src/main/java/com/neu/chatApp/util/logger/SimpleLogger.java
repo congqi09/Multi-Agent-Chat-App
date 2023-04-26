@@ -1,4 +1,4 @@
-package logger;
+package com.neu.chatApp.util.logger;
 
 import java.text.SimpleDateFormat;
 

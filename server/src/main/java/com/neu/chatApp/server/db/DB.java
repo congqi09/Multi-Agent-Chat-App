@@ -1,6 +1,6 @@
-package db;
+package com.neu.chatApp.server.db;
 
-import entity.User;
+import com.neu.chatApp.util.entity.User;
 
 public interface DB {
   void insert(User user);

@@ -1,4 +1,4 @@
-package gui;
+package com.neu.chatApp.client.gui;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.swing.*;
 
-import api.RMIServer;
+import com.neu.chatApp.util.api.RMIServer;
 
 public class Chat {
   JPanel panelMain;

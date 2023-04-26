@@ -9,9 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="util" />
         <module name="server" />
+        <module name="client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="client" target="17" />
       <module name="Multi-Agent-Chat-App" target="17" />
       <module name="server" target="17" />
       <module name="util" target="17" />

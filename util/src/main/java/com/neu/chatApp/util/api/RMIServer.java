@@ -1,10 +1,10 @@
-package api;
+package com.neu.chatApp.util.api;
+
+import com.neu.chatApp.util.entity.Message;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
-
-import entity.Message;
 
 public interface RMIServer extends Remote {
   boolean signUp(String username, String password) throws RemoteException;

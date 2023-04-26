@@ -1,4 +1,4 @@
-package encryption;
+package com.neu.chatApp.util.encryption;
 
 import java.util.Random;
 import org.apache.commons.codec.digest.DigestUtils;

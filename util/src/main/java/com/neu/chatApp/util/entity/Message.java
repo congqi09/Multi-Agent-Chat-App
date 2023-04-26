@@ -1,4 +1,4 @@
-package entity;
+package com.neu.chatApp.util.entity;
 
 import java.io.Serializable;
 

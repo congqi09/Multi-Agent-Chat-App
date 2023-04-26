@@ -1,6 +1,4 @@
-package db;
-
-import org.bson.Document;
+package com.neu.chatApp.server.db;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -13,7 +11,7 @@ import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.yaml.snakeyaml.Yaml;
 
-import entity.User;
+import com.neu.chatApp.util.entity.User;
 
 import static com.mongodb.MongoClientSettings.getDefaultCodecRegistry;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;

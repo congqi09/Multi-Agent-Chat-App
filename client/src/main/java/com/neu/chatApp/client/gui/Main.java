@@ -1,10 +1,10 @@
-package gui;
+package com.neu.chatApp.client.gui;
 
 import java.awt.*;
 
 import javax.swing.*;
 
-import entity.Message;
+import com.neu.chatApp.util.entity.Message;
 
 public class Main {
   private static String username;
@@ -17,7 +17,7 @@ public class Main {
     CardLayout cardLayout = new CardLayout();
     contentPane.setLayout(cardLayout);
 
-    gui.Login login = new Login();
+    com.neu.chatApp.client.gui.Login login = new Login();
     Chat chat = new Chat();
     contentPane.add(login.panelMain, "login");
     contentPane.add(chat.panelMain, "chat");
