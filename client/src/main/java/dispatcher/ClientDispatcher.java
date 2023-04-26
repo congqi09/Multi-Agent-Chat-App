@@ -49,7 +49,7 @@ public class ClientDispatcher extends SimpleChannelInboundHandler<TransmitProtoc
         this.transactionEventHandler = new TransactionHandler();
     }
 
-    @Override
+  //  @Override
     protected void messageReceived(ChannelHandlerContext channelHandlerContext, TransmitProtocol transmitProtocol) throws Exception {
         
     }
