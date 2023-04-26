@@ -1,5 +1,6 @@
 package db;
 
+import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -7,16 +8,16 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 
 import org.bson.codecs.configuration.CodecProvider;
+import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.springframework.stereotype.Repository;
 import org.yaml.snakeyaml.Yaml;
 
-import entity.User;
+import java.util.ArrayList;
+import java.util.List;
 
-import static com.mongodb.MongoClientSettings.getDefaultCodecRegistry;
-import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
-import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
+import entity.User;
 
 @Repository
 public class MongoDB implements DB {
@@ -45,6 +46,42 @@ public class MongoDB implements DB {
             MongoDatabase database = mongoClient.getDatabase("chat_app").withCodecRegistry(pojoCodecRegistry);
             MongoCollection<User> users = database.getCollection("users", User.class);
             return users.find(Filters.eq("username", username)).first();
+        }
+    }
+
+    @Override
+    public List<String> getOnlineUsers() {
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("chat_app").withCodecRegistry(pojoCodecRegistry);
+            MongoCollection<User> users = database.getCollection("users", User.class);
+            return users.distinct("username", Filters.eq("isOnline", true), String.class).into(new ArrayList<>());
+        }
+    }
+
+    @Override
+    public void updateOnlineStatus(String username, boolean isOnline) {
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("chat_app").withCodecRegistry(pojoCodecRegistry);
+            MongoCollection<User> users = database.getCollection("users", User.class);
+            User user = users.find(Filters.eq("username", username)).first();
+            if (user != null) {
+                user.setOnline(isOnline);
+                users.replaceOne(Filters.eq("username", username), user);
+            }
+        }
+    }
+
+    @Override
+    public void updateHostnameAndPort(String username, String hostname, int port) {
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("chat_app").withCodecRegistry(pojoCodecRegistry);
+            MongoCollection<User> users = database.getCollection("users", User.class);
+            User user = users.find(Filters.eq("username", username)).first();
+            if (user != null) {
+                user.setHostname(hostname);
+                user.setPort(port);
+                users.replaceOne(Filters.eq("username", username), user);
+            }
         }
     }
 

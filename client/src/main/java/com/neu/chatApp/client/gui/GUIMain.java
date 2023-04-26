@@ -6,10 +6,10 @@ import javax.swing.*;
 
 import entity.Message;
 
-public class Main {
+public class GUIMain {
   private static String username;
 
-  public static void main(String[] args) {
+  public GUIMain() {
     JFrame frame = new JFrame("Main");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(600, 400);

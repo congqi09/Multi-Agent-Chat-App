@@ -2,6 +2,7 @@ package controller;
 
 import service.UserService;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,12 +24,17 @@ public class UserController {
   }
 
   @PostMapping("/login")
-  public boolean login(@RequestBody String username, @RequestBody String password) {
+  public ResponseEntity<String> login(@RequestBody String username, @RequestBody String password) {
     return userService.login(username, password);
   }
 
   @PostMapping("/signup")
-  public boolean signup(@RequestBody String username, @RequestBody String password) {
+  public ResponseEntity<String> signup(@RequestBody String username, @RequestBody String password) {
     return userService.signup(username, password);
+  }
+
+  @PostMapping("/logout")
+  public ResponseEntity<String> logout(@RequestBody String username) {
+    return userService.logout(username);
   }
 }

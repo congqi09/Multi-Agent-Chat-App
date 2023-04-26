@@ -19,12 +19,12 @@ public class Chat {
   final List<String> messageHistory = new ArrayList<>();
 
   public Chat() {
-    try {
-      Registry registry = LocateRegistry.getRegistry("localhost", 6666);
-      server = (RMIServer) registry.lookup("api.Server");
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+//    try {
+//      Registry registry = LocateRegistry.getRegistry("localhost", 6666);
+//      server = (RMIServer) registry.lookup("api.Server");
+//    } catch (Exception e) {
+//      e.printStackTrace();
+//    }
   }
 
   public static void main(String[] args) {
