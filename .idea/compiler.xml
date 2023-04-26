@@ -10,18 +10,17 @@
         <module name="server" />
         <module name="client" />
         <module name="util" />
+        <module name="chat-app" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="client" target="17" />
       <module name="demo" target="17" />
       <module name="Multi-Agent-Chat-App" target="17" />
-      <module name="server" target="17" />
-      <module name="util" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="chat-app" options="-parameters" />
       <module name="demo" options="-parameters" />
     </option>
   </component>
