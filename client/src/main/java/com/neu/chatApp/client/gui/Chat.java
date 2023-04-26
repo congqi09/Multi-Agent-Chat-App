@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.swing.*;
 
-import com.neu.chatApp.util.api.RMIServer;
+import api.RMIServer;
 
 public class Chat {
   JPanel panelMain;

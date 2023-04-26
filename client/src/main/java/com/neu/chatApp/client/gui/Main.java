@@ -4,7 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import com.neu.chatApp.util.entity.Message;
+import entity.Message;
 
 public class Main {
   private static String username;
