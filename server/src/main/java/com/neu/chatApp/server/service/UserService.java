@@ -2,7 +2,7 @@ package com.neu.chatApp.server.service;
 
 import com.neu.chatApp.server.db.DB;
 import com.neu.chatApp.server.db.MemoryDB;
-import com.neu.chatApp.server.entity.User;
+import com.neu.chatApp.entity.User;
 import logger.SimpleLogger;
 
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class UserService {
     if (user != null && user.getPassword().equals(password)) {
       db.updateOnlineStatus(username, true);
       memory.onlineUsers.add(username);
-      SimpleLogger.info("Sign in success");
+      SimpleLogger.info(username + " logged in");
       return ResponseEntity.ok("Sign in success");
     }
     return ResponseEntity.badRequest().body("Sign in failed");
@@ -32,8 +32,8 @@ public class UserService {
   public ResponseEntity<String> signup(String username, String password) {
     // find if username already exists
     if (db.select(username) != null) {
-      SimpleLogger.error("Sign up failed: Username already exists");
-      return ResponseEntity.badRequest().body("Sign up failed: Username already exists");
+      SimpleLogger.error("Sign up failed: Username" + username + "already exists");
+      return ResponseEntity.badRequest().body("Sign up failed: Username" + username + "already exists");
     }
     db.insert(new User(username, password));
     return ResponseEntity.ok("Sign up success");

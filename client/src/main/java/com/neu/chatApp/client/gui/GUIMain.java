@@ -4,19 +4,24 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import com.neu.chatApp.client.data.ClientData;
+import com.neu.chatApp.client.rest.RestClient;
 import com.neu.chatApp.entity.Message;
 
 public class GUIMain {
   private static String username;
+  private RestClient restClient;
 
   public GUIMain() {
+    // TODO: initialize these in command line args?
+    String hostname = "localhost";
+    int port = 8080;
+    ClientData.serverHostname = hostname;
+    ClientData.serverHttpPort = port;
+    ClientData.baseURL = "http://" + hostname + ":" + port + "/api/user";
+    restClient = new RestClient(ClientData.baseURL);
+
     JFrame frame =  new JFrame("Main");
-//    try {
-//      frame = new JFrame("Main");
-//    }
-//    catch (HeadlessException | NullPointerException e) {
-//      e.getMessage();
-//    }
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(600, 400);
     Container contentPane = frame.getContentPane();

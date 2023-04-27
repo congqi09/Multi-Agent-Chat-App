@@ -1,6 +1,7 @@
 package dispatcher;
 
 import com.neu.chatApp.client.data.ClientData;
+import com.neu.chatApp.client.rest.RestClient;
 
 import handler.GeneralCommunicationHandler;
 import handler.JoinAndLeaveHandler;
@@ -12,7 +13,6 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.client.RestTemplate;
 
 import node.Node;
 import node.NodeChannel;
@@ -106,7 +106,7 @@ public class ClientDispatcher extends SimpleChannelInboundHandler<TransmitProtoc
                 log.info("Detected a node crash id: " + channel.getUserId() + ", name: " + channel.getUserName());
                 if (ClientData.myNode.isLeader()) {
                     // report to server if my node is leader
-                    new RestTemplate().postForEntity("http://" + ClientData.serverHostname + ":" + ClientData.serverHttpPort + "/user/logout", channel.getUserId(), Void.class);
+                    new RestClient(ClientData.baseURL).logout(channel.getUserName());
                     log.info("Reported to server");
                 }
                 ClientData.liveNodeList.remove(channel.getUserId());

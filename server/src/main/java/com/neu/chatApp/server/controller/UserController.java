@@ -26,18 +26,33 @@ public class UserController {
     return "user";
   }
 
-  @PostMapping("/login")
+//  @PostMapping("/login")
   public ResponseEntity<String> login(@RequestBody Map<String, String> request) {
     return userService.login(request.get("username"), request.get("password"));
   }
 
-  @PostMapping("/signup")
+  @PostMapping("/login")
+  public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password) {
+    return userService.login(username, password);
+  }
+
+//  @PostMapping("/signup")
   public ResponseEntity<String> signup(@RequestBody Map<String, String> request) {
     return userService.signup(request.get("username"), request.get("password"));
   }
 
-  @PostMapping("/logout")
+  @PostMapping("/signup")
+  public ResponseEntity<String> signup(@RequestParam String username, @RequestParam String password) {
+    return userService.signup(username, password);
+  }
+
+//  @PostMapping("/logout")
   public ResponseEntity<String> logout(@RequestBody Map<String, String> request) {
     return userService.logout(request.get("username"));
+  }
+
+  @PostMapping("/logout")
+  public ResponseEntity<String> logout(@RequestParam String username) {
+    return userService.logout(username);
   }
 }
