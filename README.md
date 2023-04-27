@@ -1,4 +1,4 @@
-Multi-Agent Chat Application
+#Multi-Agent Chat Application
 
 This is a real-time multi-agent chat application built with Java. The system can support multiple agents to use the application concurrently, contend for shared resources, and perform real-time updates to some form of shared state.
 
