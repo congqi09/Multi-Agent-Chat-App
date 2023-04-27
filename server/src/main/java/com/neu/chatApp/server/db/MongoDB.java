@@ -1,4 +1,4 @@
-package com.neu.chatApp.db;
+package com.neu.chatApp.server.db;
 
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -17,10 +17,10 @@ import org.yaml.snakeyaml.Yaml;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.neu.chatApp.entity.User;
+import com.neu.chatApp.server.entity.User;
 
 @Repository
-public class MongoDB implements DB {
+public class MongoDB implements com.neu.chatApp.server.db.DB {
     private String uri;
     private CodecProvider pojoCodecProvider;
     private CodecRegistry pojoCodecRegistry;

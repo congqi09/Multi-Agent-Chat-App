@@ -1,11 +1,11 @@
-package com.neu.chatApp.db;
+package com.neu.chatApp.server.db;
 
 import java.util.List;
 
 public class MemoryDB {
   public List<String> onlineUsers;
 
-  public MemoryDB(DB db) {
+  public MemoryDB(com.neu.chatApp.server.db.DB db) {
     this.onlineUsers = db.getOnlineUsers();
     // TODO: try to ping each online user and update online status
   }

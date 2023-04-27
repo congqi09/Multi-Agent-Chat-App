@@ -1,14 +1,14 @@
-package com.neu.chatApp.service;
+package com.neu.chatApp.server.service;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 import api.RMIServer;
-import com.neu.chatApp.db.DB;
-import com.neu.chatApp.db.MongoDB;
-import com.neu.chatApp.entity.Message;
-import com.neu.chatApp.entity.User;
+import com.neu.chatApp.server.db.DB;
+import com.neu.chatApp.server.db.MongoDB;
+import com.neu.chatApp.server.entity.Message;
+import com.neu.chatApp.server.entity.User;
 import logger.SimpleLogger;
 
 public class RMIServerImpl extends UnicastRemoteObject implements RMIServer {
