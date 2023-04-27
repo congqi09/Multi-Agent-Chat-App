@@ -31,7 +31,7 @@ public class GUIMain {
     CardLayout cardLayout = new CardLayout();
     contentPane.setLayout(cardLayout);
 
-    Log login = new Log();
+    Login login = new Login();
     Chat chat = new Chat();
     contentPane.add(login.panelMain, "login");
     contentPane.add(chat.panelMain, "chat");
