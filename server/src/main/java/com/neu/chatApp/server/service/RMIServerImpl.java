@@ -7,8 +7,8 @@ import java.util.List;
 import api.RMIServer;
 import com.neu.chatApp.server.db.DB;
 import com.neu.chatApp.server.db.MongoDB;
-import com.neu.chatApp.server.entity.Message;
-import com.neu.chatApp.server.entity.User;
+import com.neu.chatApp.entity.Message;
+import com.neu.chatApp.entity.User;
 import logger.SimpleLogger;
 
 public class RMIServerImpl extends UnicastRemoteObject implements RMIServer {

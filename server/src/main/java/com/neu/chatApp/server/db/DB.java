@@ -2,7 +2,7 @@ package com.neu.chatApp.server.db;
 
 import java.util.List;
 
-import com.neu.chatApp.server.entity.User;
+import com.neu.chatApp.entity.User;
 
 public interface DB {
   void insert(User user);

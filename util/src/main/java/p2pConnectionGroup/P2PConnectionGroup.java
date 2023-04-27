@@ -25,7 +25,7 @@ public class P2PConnectionGroup {
   public P2PConnectionGroup(int port, ChannelInboundHandler dispatcher) {
     this.client = new NettyClient(dispatcher);
     this.server = new NettyServer(port, dispatcher);
-    log.info("Peer to peer com.neu.chatApp.service started");
+    log.info("Peer to peer com.neu.chatApp.server.service started");
   }
 
   /**

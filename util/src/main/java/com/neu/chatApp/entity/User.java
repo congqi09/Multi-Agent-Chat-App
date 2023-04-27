@@ -1,4 +1,4 @@
-package com.neu.chatApp.server.entity;
+package com.neu.chatApp.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

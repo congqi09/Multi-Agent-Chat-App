@@ -327,7 +327,7 @@ modified object code on the User Product (for example, the work has
 been installed in ROM).
 
   The requirement to provide Installation Information does not include a
-requirement to continue to provide support com.neu.chatApp.service, warranty, or updates
+requirement to continue to provide support com.neu.chatApp.server.service, warranty, or updates
 for a work that has been modified or installed by the recipient, or for
 the User Product in which it has been modified or installed.  Access to a
 network may be denied when the modification itself materially and
@@ -377,7 +377,7 @@ that material) supplement the terms of this License with terms:
     authors of the material; or
 
     e) Declining to grant rights under trademark law for use of some
-    trade names, trademarks, or com.neu.chatApp.service marks; or
+    trade names, trademarks, or com.neu.chatApp.server.service marks; or
 
     f) Requiring indemnification of licensors and authors of that
     material by anyone who conveys the material (or modified versions of
@@ -450,10 +450,10 @@ receives a license from the original licensors, to run, modify and
 propagate that work, subject to this License.  You are not responsible
 for enforcing compliance by third parties with this License.
 
-  An "com.neu.chatApp.entity transaction" is a transaction transferring control of an
+  An "com.neu.chatApp.server.entity transaction" is a transaction transferring control of an
 organization, or substantially all assets of one, or subdividing an
 organization, or merging organizations.  If propagation of a covered
-work results from an com.neu.chatApp.entity transaction, each party to that
+work results from an com.neu.chatApp.server.entity transaction, each party to that
 transaction who receives a copy of the work also receives whatever
 licenses to the work the party's predecessor in interest had or could
 give under the previous paragraph, plus a right to possession of the

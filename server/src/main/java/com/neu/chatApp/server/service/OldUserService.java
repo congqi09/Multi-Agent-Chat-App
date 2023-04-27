@@ -45,7 +45,7 @@
 //        String encryptedPassword = Encryption.md5(password, salt);
 //        // create an account
 //        User user = new User(nickname, email, encryptedPassword, salt);
-//        // save the com.neu.chatApp.entity
+//        // save the com.neu.chatApp.server.entity
 //        userRepository.save(user);
 //        return ResponseEntity.ok("Welcome to join us");
 //    }
@@ -84,7 +84,7 @@
 //        }
 //
 //        // record the ip and port of this time login
-//        // com.neu.chatApp.db
+//        // com.neu.chatApp.server.db
 //        userRepository.updateLogin(user.getId(), true);
 //        userRepository.updateHostnameAndPort(id, hostname, port);
 //

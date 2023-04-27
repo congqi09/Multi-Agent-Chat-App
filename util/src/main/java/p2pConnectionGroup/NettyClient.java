@@ -1,5 +1,6 @@
 package p2pConnectionGroup;
 
+import lombok.extern.slf4j.Slf4j;
 import protocol.TransmitProtocol;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
@@ -9,7 +10,6 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
-import lombok.extern.slf4j.Slf4j;
 
 import java.net.SocketTimeoutException;
 

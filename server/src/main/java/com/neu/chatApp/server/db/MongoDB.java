@@ -17,7 +17,7 @@ import org.yaml.snakeyaml.Yaml;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.neu.chatApp.server.entity.User;
+import com.neu.chatApp.entity.User;
 
 @Repository
 public class MongoDB implements com.neu.chatApp.server.db.DB {
