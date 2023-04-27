@@ -2,7 +2,7 @@ package handler;
 
 import node.Node;
 import protocol.joinAndLeaveProtocol.JoinAndLeaveType;
-import protocol.transactionProtocol.TransactionProtocol;
+
 import io.netty.channel.Channel;
 
 /**

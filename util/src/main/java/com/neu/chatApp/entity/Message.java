@@ -2,7 +2,14 @@ package com.neu.chatApp.entity;
 
 import java.io.Serializable;
 
-public class Message implements Serializable {
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+public class Message {
   String username;
   String content;
 

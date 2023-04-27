@@ -25,7 +25,7 @@ public class RMIServerImpl extends UnicastRemoteObject implements RMIServer {
       SimpleLogger.error("Sign up failed: Username already exists");
       return false;
     }
-    db.insert(new User(username, password));
+    db.insertUser(new User(username, password));
     return true;
   }
 

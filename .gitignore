@@ -1,5 +1,9 @@
-/util/target/
-/out/
-/server/src/main/resources/
-/.idea/libraries/
-/.idea/
+util/target
+out
+server/src/main/resources
+.idea/libraries
+.idea
+util/src/main/java/api
+server/src/main/java/com/neu/chatApp/server/service/RMIServerImpl.java
+server/src/main/java/com/neu/chatApp/server/service/OldUserService.java
+server/src/main/java/com/neu/chatApp/server/netty/demo

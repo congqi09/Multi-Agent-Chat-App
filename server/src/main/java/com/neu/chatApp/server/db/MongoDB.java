@@ -7,6 +7,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 
+import com.neu.chatApp.entity.Message;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
@@ -20,7 +21,7 @@ import java.util.List;
 import com.neu.chatApp.entity.User;
 
 @Repository
-public class MongoDB implements com.neu.chatApp.server.db.DB {
+public class MongoDB implements DB {
     private String uri;
     private CodecProvider pojoCodecProvider;
     private CodecRegistry pojoCodecRegistry;
@@ -32,7 +33,7 @@ public class MongoDB implements com.neu.chatApp.server.db.DB {
     }
 
     @Override
-    public void insert(User user) {
+    public void insertUser(User user) {
         try (MongoClient mongoClient = MongoClients.create(uri)) {
             MongoDatabase database = mongoClient.getDatabase("chat_app").withCodecRegistry(pojoCodecRegistry);
             MongoCollection<User> users = database.getCollection("users", User.class);
@@ -85,11 +86,29 @@ public class MongoDB implements com.neu.chatApp.server.db.DB {
         }
     }
 
+    @Override
+    public List<Message> getMessages() {
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("chat_app").withCodecRegistry(pojoCodecRegistry);
+            MongoCollection<Message> messages = database.getCollection("messages", Message.class);
+            return messages.find().into(new ArrayList<>());
+        }
+    }
+
+    @Override
+    public void insertMessage(Message msg) {
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("chat_app").withCodecRegistry(pojoCodecRegistry);
+            MongoCollection<Message> messages = database.getCollection("messages", Message.class);
+            messages.insertOne(msg);
+        }
+    }
+
     public static void main(String[] args) {
         MongoDB db = new MongoDB();
         db.select("test");
         User user = new User("test", "1234");
-        db.insert(user);
+        db.insertUser(user);
         System.out.println(db.select("test"));
     }
 }
