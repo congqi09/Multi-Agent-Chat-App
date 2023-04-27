@@ -62,11 +62,32 @@ public class RestClient {
     return sendPostRequest(baseUrl + "/logout", formBody);
   }
 
+  public Response sendMessage(String username, String message) {
+    // TODO: changed formBody to jsonBody
+    RequestBody formBody = new FormBody.Builder()
+            .add("username", username)
+            .add("message", message)
+            .build();
+
+    return sendPostRequest(baseUrl + "/sendMessage", formBody);
+  }
+
+  public Response getMessages() {
+    RequestBody formBody = new FormBody.Builder()
+            .build();
+
+    return sendPostRequest(baseUrl + "/getMessages", formBody);
+  }
+
   public static void main(String[] args) {
     RestClient test = new RestClient("http://localhost:8080/api/user");
     test.signUp("test-ok-http", "test");
     test.login("test-ok-http", "test");
     test.logout("test-ok-http");
     test.signUp("test-ok-http3", "test");
+    test.sendMessage("test-ok-http3", "test message");
+    test.sendMessage("test-ok-http", "test message2");
+    // validate if user exists
+    test.getMessages();
   }
 }

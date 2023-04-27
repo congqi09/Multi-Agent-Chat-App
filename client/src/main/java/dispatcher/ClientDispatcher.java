@@ -49,12 +49,12 @@ public class ClientDispatcher extends SimpleChannelInboundHandler<TransmitProtoc
         this.transactionEventHandler = new TransactionHandler();
     }
 
-  //  @Override
+//    @Override
     protected void messageReceived(ChannelHandlerContext channelHandlerContext, TransmitProtocol transmitProtocol) throws Exception {
         
     }
 
-//    @Override
+    @Override
     protected void channelRead0(ChannelHandlerContext ctx, TransmitProtocol msg) throws Exception {
         switch (msg.getType()) {
             // dispatch task by types

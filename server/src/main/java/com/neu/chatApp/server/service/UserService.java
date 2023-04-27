@@ -5,8 +5,11 @@ import com.neu.chatApp.server.db.MemoryDB;
 import com.neu.chatApp.entity.User;
 import logger.SimpleLogger;
 
+import com.neu.chatApp.entity.Message;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -35,7 +38,7 @@ public class UserService {
       SimpleLogger.error("Sign up failed: Username" + username + "already exists");
       return ResponseEntity.badRequest().body("Sign up failed: Username" + username + "already exists");
     }
-    db.insert(new User(username, password));
+    db.insertUser(new User(username, password));
     return ResponseEntity.ok("Sign up success");
   }
 
@@ -44,5 +47,18 @@ public class UserService {
     memory.onlineUsers.remove(username);
     SimpleLogger.info(username + " logged out");
     return ResponseEntity.ok("Logout success");
+  }
+
+  public ResponseEntity<List<Message>> getMessages() {
+    return ResponseEntity.ok(db.getMessages());
+  }
+
+  public ResponseEntity<List<String>> getOnlineUsers() {
+    return ResponseEntity.ok(memory.getOnlineUsers());
+  }
+
+  public ResponseEntity<String> sendMessage(String username, String message) {
+    db.insertMessage(new Message(username, message));
+    return ResponseEntity.ok("Message sent");
   }
 }

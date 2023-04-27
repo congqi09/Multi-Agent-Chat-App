@@ -2,6 +2,7 @@ package com.neu.chatApp.server.controller;
 
 import com.neu.chatApp.server.service.UserService;
 
+import com.neu.chatApp.entity.Message;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -54,5 +56,15 @@ public class UserController {
   @PostMapping("/logout")
   public ResponseEntity<String> logout(@RequestParam String username) {
     return userService.logout(username);
+  }
+
+  @PostMapping("/getMessages")
+  public ResponseEntity<List<Message>> getMessages() {
+    return userService.getMessages();
+  }
+
+  @PostMapping("/sendMessage")
+  public ResponseEntity<String> sendMessage(@RequestParam String username, @RequestParam String message) {
+    return userService.sendMessage(username, message);
   }
 }
