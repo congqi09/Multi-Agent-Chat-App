@@ -16,13 +16,13 @@ To make our application more user-friendly and efficient, we are planning to dev
 
 ## Algorithms
 
-We implemented the following concepts taught in class for this project:
+We implemented the following concepts taught in class for this project:  
 
-Distributed mutual exclusion
-Distributed transactions
-Fault tolerance.
-Group communications
-Peer-to-peer networks
+Distributed mutual exclusion  
+Distributed transactions  
+Fault tolerance  
+Group communications  
+Peer-to-peer networks  
 
 ### Distributed Mutual Exclusion
 The central server grants a token to the lead node, which can use it to establish a long polling connection and perform its required tasks without interference from other nodes. Once the lead node completes its tasks, it releases the token, which becomes available to be granted to another node.
@@ -41,10 +41,10 @@ Our program utilizes a peer-to-peer network architecture, where each client (nod
 
 ## Frameworks and tools
 
-Netty: Used to construct the communication channel
-Maven: Used to manage dependencies and package modules, and as the application starter
-OKHttp and Spring Web: Used for REST API and REST template, which are used for signup, login, and logout functionality
-MongoDB Atlas: Used as the cloud end database, as it is easy to operate and manage.
+Netty: Used to construct the communication channel  
+Maven: Used to manage dependencies and package modules, and as the application starter  
+OKHttp and Spring Web: Used for REST API and REST template, which are used for signup, login, and logout functionality  
+MongoDB Atlas: Used as the cloud end database, as it is easy to operate and manage.  
 
 ## API Documentation
 
@@ -52,7 +52,7 @@ Please see the JavaDoc in the folder.
 
 ## How to Run
 
-To get started with this project, first make sure you have the following software installed:
+To get started with this project, first make sure you have the following software installed:  
 
 Java 8 or later
 Apache Maven
