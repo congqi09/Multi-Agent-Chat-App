@@ -1,7 +1,5 @@
 package com.neu.chatApp.client.gui;
 
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +13,7 @@ public class Chat {
   JTextPane newMessage;
   JButton sendButton;
   JLabel currentUser;
+  JButton logoutButton;
   RMIServer server;
   final List<String> messageHistory = new ArrayList<>();
 

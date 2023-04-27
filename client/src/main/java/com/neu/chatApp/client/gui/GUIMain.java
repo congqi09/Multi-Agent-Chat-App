@@ -8,8 +8,11 @@ import com.neu.chatApp.client.data.ClientData;
 import com.neu.chatApp.client.rest.RestClient;
 import com.neu.chatApp.entity.Message;
 
+import okhttp3.Response;
+
 public class GUIMain {
   private static String username;
+  private static String password;
   private RestClient restClient;
 
   public GUIMain() {
@@ -28,15 +31,37 @@ public class GUIMain {
     CardLayout cardLayout = new CardLayout();
     contentPane.setLayout(cardLayout);
 
-    com.neu.chatApp.client.gui.Login login = new Login();
+    Log login = new Log();
     Chat chat = new Chat();
     contentPane.add(login.panelMain, "login");
     contentPane.add(chat.panelMain, "chat");
 
+    login.signup.addActionListener(e -> {
+      username = login.usernameField.getText();
+      password = login.passwordField.getText();
+      if (password.length() < 4) {
+        JOptionPane.showMessageDialog(login.signup, "password must be at least 4 characters long, please enter again");
+        login.usernameField.setText(null);
+        login.passwordField.setText(null);
+        return;
+      }
+      JOptionPane.showMessageDialog(login.signup, "you have successfully signed up, click the signin button to continue.");
+
+      login.usernameField.setText(null);
+      login.passwordField.setText(null);
+      Response response;
+      response = restClient.signUp(username, password);
+
+    });
+
     login.loginButton.addActionListener(e -> {
       username = login.usernameField.getText();
+      password = login.passwordField.getText();
       cardLayout.show(contentPane, "chat");
       chat.currentUser.setText("Current User: " + username);
+      Response response;
+      response = restClient.login(username, password);
+
     });
 
     chat.sendButton.addActionListener(e -> {
@@ -52,6 +77,20 @@ public class GUIMain {
       chat.newMessage.setText(null); // clear the input field
     });
 
+    chat.logoutButton.addActionListener(e -> {
+      int input = JOptionPane.showConfirmDialog(chat.logoutButton, "Log out?", "Confirm", JOptionPane.OK_CANCEL_OPTION);
+      if (input == 0) { /// 0=ok, 2=cancel
+        Response response;
+        response = restClient.logout(username);
+        frame.dispose();
+      }
+    });
+
+
     frame.setVisible(true);
+  }
+
+  public static void main(String[] args) {
+    new GUIMain();
   }
 }
