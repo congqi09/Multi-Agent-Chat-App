@@ -1,14 +1,13 @@
 package com.neu.chatApp.client.gui;
 
-import java.awt.*;
+import com.google.gson.Gson;
 
+import java.awt.*;
 import javax.swing.*;
 
 import com.neu.chatApp.client.data.ClientData;
 import com.neu.chatApp.client.rest.RestClient;
 import com.neu.chatApp.entity.Message;
-
-import okhttp3.Response;
 
 public class GUIMain {
   private static String username;
@@ -45,43 +44,55 @@ public class GUIMain {
         login.passwordField.setText(null);
         return;
       }
-      JOptionPane.showMessageDialog(login.signup, "you have successfully signed up, click the signin button to continue.");
-
       login.usernameField.setText(null);
       login.passwordField.setText(null);
-      Response response;
-      response = restClient.signUp(username, password);
-
+      String response = restClient.signUp(username, password);
+      if (response != null) {
+        JOptionPane.showMessageDialog(login.signup, "you have successfully signed up, click the login button to continue.");
+      } else {
+        JOptionPane.showMessageDialog(login.signup, "username already exists, please enter again");
+        login.usernameField.setText(null);
+        login.passwordField.setText(null);
+      }
     });
 
     login.loginButton.addActionListener(e -> {
       username = login.usernameField.getText();
       password = login.passwordField.getText();
-      cardLayout.show(contentPane, "chat");
-      chat.currentUser.setText("Current User: " + username);
-      Response response;
-      response = restClient.login(username, password);
 
+      String response = restClient.login(username, password);
+
+      if (response != null) {
+        chat.currentUser.setText("Current User: " + username);
+        response = restClient.getMessages();
+        cardLayout.show(contentPane, "chat");
+        if (response != null) {
+          Message[] messages = new Gson().fromJson(response, Message[].class);
+          for (Message message : messages) {
+            System.out.println(message);
+            chat.messageHistory.add(message.toString());
+          }
+          chat.chatHistory.setListData(chat.messageHistory.toArray());
+        }
+      } else {
+        JOptionPane.showMessageDialog(login.loginButton, "username or password is incorrect, please try again");
+        login.usernameField.setText(null);
+        login.passwordField.setText(null);
+      }
     });
 
     chat.sendButton.addActionListener(e -> {
-      Message message = new Message(username, chat.newMessage.getText());
-      try {
-        chat.server.send(message);
-        chat.messageHistory.clear();
-        chat.messageHistory.addAll(chat.server.get().stream().map(Message::toString).toList());
-      } catch (Exception ex) {
-        throw new RuntimeException(ex);
-      }
+      restClient.sendMessage(username, chat.newMessage.getText());
+      chat.messageHistory.add(username + ": " + chat.newMessage.getText());
       chat.chatHistory.setListData(chat.messageHistory.toArray());
+      // TODO: update message realtime
       chat.newMessage.setText(null); // clear the input field
     });
 
     chat.logoutButton.addActionListener(e -> {
       int input = JOptionPane.showConfirmDialog(chat.logoutButton, "Log out?", "Confirm", JOptionPane.OK_CANCEL_OPTION);
       if (input == 0) { /// 0=ok, 2=cancel
-        Response response;
-        response = restClient.logout(username);
+        restClient.logout(username);
         frame.dispose();
       }
     });

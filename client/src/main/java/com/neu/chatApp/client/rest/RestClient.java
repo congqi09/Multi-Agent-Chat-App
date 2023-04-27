@@ -17,7 +17,7 @@ public class RestClient {
     this.baseUrl = baseUrl;
   }
 
-  private Response sendPostRequest(String url, RequestBody body) {
+  private String sendPostRequest(String url, RequestBody body) {
     Request request = new Request.Builder()
             .url(url)
             .addHeader("Content-Type", "OkHttp Bot")
@@ -27,15 +27,17 @@ public class RestClient {
     try (Response response = httpClient.newCall(request).execute()) {
       if (!response.isSuccessful()) {
         SimpleLogger.error("Unexpected code " + response);
+        return null;
       }
-      SimpleLogger.info(response.body().string());
-      return response;
+      String result = response.body().string();
+      SimpleLogger.info(result);
+      return result;
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
   }
 
-  public Response signUp(String username, String password) {
+  public String signUp(String username, String password) {
     RequestBody formBody = new FormBody.Builder()
             .add("username", username)
             .add("password", password)
@@ -44,7 +46,7 @@ public class RestClient {
     return sendPostRequest(baseUrl + "/signup", formBody);
   }
 
-  public Response login(String username, String password) {
+  public String login(String username, String password) {
     RequestBody formBody = new FormBody.Builder()
             .add("username", username)
             .add("password", password)
@@ -54,7 +56,7 @@ public class RestClient {
   }
 
 
-  public Response logout(String username) {
+  public String logout(String username) {
     RequestBody formBody = new FormBody.Builder()
             .add("username", username)
             .build();
@@ -62,7 +64,7 @@ public class RestClient {
     return sendPostRequest(baseUrl + "/logout", formBody);
   }
 
-  public Response sendMessage(String username, String message) {
+  public String sendMessage(String username, String message) {
     // TODO: changed formBody to jsonBody
     RequestBody formBody = new FormBody.Builder()
             .add("username", username)
@@ -72,7 +74,7 @@ public class RestClient {
     return sendPostRequest(baseUrl + "/sendMessage", formBody);
   }
 
-  public Response getMessages() {
+  public String getMessages() {
     RequestBody formBody = new FormBody.Builder()
             .build();
 
