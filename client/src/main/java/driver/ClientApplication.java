@@ -31,11 +31,15 @@ public class ClientApplication implements CommandLineRunner {
         // take port from args to start the client
         if (args.length == 4) {
             try {
-                port = Integer.parseInt(args[0]);
-
-                serverHostname = args[1];
-                serverHTTPPort = Integer.parseInt(args[2]);
-                serverNettyPort = Integer.parseInt(args[3]);
+//                port = Integer.parseInt(args[0]);
+//
+//                serverHostname = args[1];
+                port = 8000;
+                serverHostname = "localhost";
+//                serverHTTPPort = Integer.parseInt(args[2]);
+//                serverNettyPort = Integer.parseInt(args[3]);
+                serverHTTPPort = 8080;
+                serverNettyPort = 9000;
             } catch (NumberFormatException e) {
                 log.error("Invalid arguments provided");
                 System.exit(1);

@@ -10,7 +10,13 @@ public class GUIMain {
   private static String username;
 
   public GUIMain() {
-    JFrame frame = new JFrame("Main");
+    JFrame frame =  new JFrame("Main");
+//    try {
+//      frame = new JFrame("Main");
+//    }
+//    catch (HeadlessException | NullPointerException e) {
+//      e.getMessage();
+//    }
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(600, 400);
     Container contentPane = frame.getContentPane();

@@ -13,7 +13,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="client" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -62,6 +64,10 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:5.3.22" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.22" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.3.22" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-sync:4.7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:bson:4.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:4.6.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.mongodb:bson-record-codec:4.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.7.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.7.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.22" level="project" />
@@ -124,10 +130,6 @@
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:24.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.22" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.22" level="project" />
-    <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-sync:4.9.1" level="project" />
-    <orderEntry type="library" name="Maven: org.mongodb:bson:4.6.1" level="project" />
-    <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:4.6.1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.mongodb:bson-record-codec:4.6.1" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-all:4.1.79.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.1.79.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-codec:4.1.79.Final" level="project" />
