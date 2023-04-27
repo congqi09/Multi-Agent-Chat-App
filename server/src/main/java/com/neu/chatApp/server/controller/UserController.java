@@ -38,7 +38,7 @@ public class UserController {
     return userService.login(username, password);
   }
 
-//  @PostMapping("/signup")
+  @PostMapping("/signup")
   public ResponseEntity<String> signup(@RequestBody Map<String, String> request) {
     return userService.signup(request.get("username"), request.get("password"));
   }
